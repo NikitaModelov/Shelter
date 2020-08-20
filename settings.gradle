@@ -1,2 +1,8 @@
+include ':feature:user'
+include ':feature:shelters'
+include ':feature:main'
+include ':feature:splash'
+include ':feature'
+include ':core'
 include ':app'
 rootProject.name = "Shelter"
