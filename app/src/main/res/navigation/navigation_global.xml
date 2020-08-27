@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_global"
+    app:defaultNavHost="true"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="ru.modelov.shelter.feature.main.MainFragment"
+        android:label="MainFragment">
+        <action
+            android:id="@+id/action_sheltersFragment_to_detailShelterFragment"
+            app:destination="@id/detailShelterFragment"
+            app:popUpTo="@id/mainFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sheltersFragment"
+        android:name="ru.modelov.shelter.feature.shelters.SheltersFragment"
+        android:label="SheltersFragment">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailShelterFragment"
+        android:name="ru.modelov.shelter.feature.shelterdetail.ShelterDetailFragment"
+        android:label="DetailShelterFragment" />
+
+</navigation>

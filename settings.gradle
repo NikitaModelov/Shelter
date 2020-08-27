@@ -1,3 +1,4 @@
+include ':feature:shelterdetail'
 include ':feature:user'
 include ':feature:shelters'
 include ':feature:main'
