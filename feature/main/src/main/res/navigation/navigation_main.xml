@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/sheltersFragment"
-        android:name="ru.modelov.shelter.feature.shelters.SheltersFragment"
+        android:name="ru.modelov.shelter.feature.shelters.presentation.SheltersFragment"
         android:label="SheltersFragment">
 
     </fragment>

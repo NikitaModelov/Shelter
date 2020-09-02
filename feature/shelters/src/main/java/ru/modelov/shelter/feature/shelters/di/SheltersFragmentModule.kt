@@ -5,8 +5,8 @@ import dagger.Module
 import dagger.Provides
 import ru.modelov.shelter.core.di.scope.FragmentScope
 import ru.modelov.shelter.core.presentation.ViewModelFactory
-import ru.modelov.shelter.feature.shelters.SheltersFragment
-import ru.modelov.shelter.feature.shelters.SheltersViewModel
+import ru.modelov.shelter.feature.shelters.presentation.SheltersFragment
+import ru.modelov.shelter.feature.shelters.presentation.SheltersViewModel
 
 @Module
 class SheltersFragmentModule {
