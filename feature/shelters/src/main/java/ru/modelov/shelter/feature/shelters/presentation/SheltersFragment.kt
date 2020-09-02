@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.observe
 import ru.modelov.shelter.core.navigation.NavHost
+import ru.modelov.shelter.core.navigation.navigate
 import ru.modelov.shelter.core.presentation.BaseFragment
 import ru.modelov.shelter.feature.shelters.R
 import ru.modelov.shelter.feature.shelters.SheltersNavCommandProvider
@@ -15,7 +16,8 @@ import ru.modelov.shelter.feature.shelters.presentation.list.ShelterItemDecorati
 import ru.modelov.shelter.feature.shelters.presentation.list.SheltersAdapter
 import javax.inject.Inject
 
-class SheltersFragment : BaseFragment<FragmentSheltersBinding>(R.layout.fragment_shelters) {
+class SheltersFragment : BaseFragment<FragmentSheltersBinding>(R.layout.fragment_shelters),
+    SheltersViewModel.EventsListener {
 
     @Inject
     lateinit var viewModel: SheltersViewModel
@@ -33,6 +35,7 @@ class SheltersFragment : BaseFragment<FragmentSheltersBinding>(R.layout.fragment
     ): View? {
         val view = super.onCreateView(inflater, container, savedInstanceState)
         binding.viewModel = viewModel
+        viewModel.eventsDispatcher.bind(viewLifecycleOwner, this)
         return view
     }
 
@@ -51,9 +54,9 @@ class SheltersFragment : BaseFragment<FragmentSheltersBinding>(R.layout.fragment
         super.onViewCreated(view, savedInstanceState)
 
         initRv()
+    }
 
-        /*btn_to_details.setOnClickListener {
-            navigate(navCommandProvider.toDetail, navHost.id)
-        }*/
+    override fun navigateToDetail(idShelter: Int) {
+        navigate(navCommandProvider.toDetail, navHost.id)
     }
 }

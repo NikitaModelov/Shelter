@@ -3,10 +3,19 @@ package ru.modelov.shelter.feature.shelters.presentation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import ru.modelov.shelter.core.presentation.BaseViewModel
+import ru.modelov.shelter.core.presentation.EventsDispatcher
+import ru.modelov.shelter.core.presentation.EventsDispatcherOwner
 import ru.modelov.shelter.feature.shelters.entities.ShelterItemEntity
 import javax.inject.Inject
 
-class SheltersViewModel @Inject constructor() : BaseViewModel() {
+class SheltersViewModel @Inject constructor() : BaseViewModel(),
+    EventsDispatcherOwner<SheltersViewModel.EventsListener> {
+
+    interface EventsListener {
+        fun navigateToDetail(idShelter: Int)
+    }
+
+    override val eventsDispatcher: EventsDispatcher<EventsListener> = EventsDispatcher()
 
     private val _titleLiveData = MutableLiveData<String>("Привет чмо")
     val titleLiveData: LiveData<String>
@@ -82,4 +91,9 @@ class SheltersViewModel @Inject constructor() : BaseViewModel() {
     init {
         _sheltersListLiveData.value = sheltersList
     }
+
+    fun clickOnItem(id: Int) {
+        eventsDispatcher.dispatchEvent { navigateToDetail(id) }
+    }
+
 }
